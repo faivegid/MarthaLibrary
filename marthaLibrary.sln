@@ -5,6 +5,18 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.API", "marthaLibrary.API\marthaLibrary.API.csproj", "{05B77BA4-CB97-4F93-97EC-EB7C5385A677}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.CoreData", "marthaLibrary.CoreData\marthaLibrary.CoreData.csproj", "{077C1671-055B-4B2B-AA49-8FA42A7E8DF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.Repos", "marthaLibrary.Repos\marthaLibrary.Repos.csproj", "{12230E0E-864B-4980-A259-8767A56544EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.Managers", "marthaLibrary.Managers\marthaLibrary.Managers.csproj", "{DBD6DA6F-8FEB-4382-8CC6-49320C1E0152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.Models", "marthaLibrary.Models\marthaLibrary.Models.csproj", "{B5D34C6F-DD99-4523-9FDC-C5858BDF7C4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.Services", "marthaLibrary.Services\marthaLibrary.Services.csproj", "{A0BF0B77-B7D9-4533-9526-ECB516CED151}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "marthaLibrary.Config", "marthaLibrary.Config\marthaLibrary.Config.csproj", "{D1589952-D13B-48E0-8600-B0CAACF5950D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,30 @@ Global
 		{05B77BA4-CB97-4F93-97EC-EB7C5385A677}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05B77BA4-CB97-4F93-97EC-EB7C5385A677}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05B77BA4-CB97-4F93-97EC-EB7C5385A677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{077C1671-055B-4B2B-AA49-8FA42A7E8DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077C1671-055B-4B2B-AA49-8FA42A7E8DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077C1671-055B-4B2B-AA49-8FA42A7E8DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077C1671-055B-4B2B-AA49-8FA42A7E8DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12230E0E-864B-4980-A259-8767A56544EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12230E0E-864B-4980-A259-8767A56544EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12230E0E-864B-4980-A259-8767A56544EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12230E0E-864B-4980-A259-8767A56544EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD6DA6F-8FEB-4382-8CC6-49320C1E0152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD6DA6F-8FEB-4382-8CC6-49320C1E0152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD6DA6F-8FEB-4382-8CC6-49320C1E0152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD6DA6F-8FEB-4382-8CC6-49320C1E0152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D34C6F-DD99-4523-9FDC-C5858BDF7C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D34C6F-DD99-4523-9FDC-C5858BDF7C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D34C6F-DD99-4523-9FDC-C5858BDF7C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D34C6F-DD99-4523-9FDC-C5858BDF7C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0BF0B77-B7D9-4533-9526-ECB516CED151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BF0B77-B7D9-4533-9526-ECB516CED151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BF0B77-B7D9-4533-9526-ECB516CED151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BF0B77-B7D9-4533-9526-ECB516CED151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1589952-D13B-48E0-8600-B0CAACF5950D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1589952-D13B-48E0-8600-B0CAACF5950D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1589952-D13B-48E0-8600-B0CAACF5950D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1589952-D13B-48E0-8600-B0CAACF5950D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
