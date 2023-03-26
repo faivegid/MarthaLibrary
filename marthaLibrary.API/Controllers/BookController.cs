@@ -8,5 +8,6 @@ namespace marthaLibrary.API.Controllers
     [Authorize]
     public class BookController : ControllerBase
     {
+
     }
 }

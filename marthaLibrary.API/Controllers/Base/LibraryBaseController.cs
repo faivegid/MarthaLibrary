@@ -22,11 +22,6 @@ namespace marthaLibrary.API.Controllers.Base
         public string Email { get => GetEmail(); }
 
         /// <summary>
-        /// gets the current logged in user mobilephone claims
-        /// </summary>
-        public string PhoneNumber { get => GetPhoneNumber(); }
-
-        /// <summary>
         /// gets the current logged in user namee claims
         /// </summary>
         public string Name { get => GetName(); }
@@ -101,22 +96,6 @@ namespace marthaLibrary.API.Controllers.Base
             var jwt = handler.ReadJwtToken(stringToken);
 
             return jwt;
-        }
-
-        /// <summary>
-        /// get the current loggedin user Mobile phone claims
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="AzaException"></exception>
-        private string GetPhoneNumber()
-        {
-            var jwt = GetJwtToken();
-            var phoneNumber = jwt.Claims.First(claim => claim.Type == ClaimTypes.MobilePhone).Value;
-
-            if (string.IsNullOrEmpty(phoneNumber))
-                throw new LibraryException("unable to verify user", HttpStatusCode.Unauthorized);
-
-            return phoneNumber;
         }
 
         /// <summary>

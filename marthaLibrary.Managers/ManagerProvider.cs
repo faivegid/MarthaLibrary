@@ -1,9 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using marthaLibrary.Managers.AuthManagers;
+using marthaLibrary.Managers.UserManagers;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace marthaLibrary.Managers
 {
@@ -15,6 +12,8 @@ namespace marthaLibrary.Managers
         /// <param name="services"></param>
         public static void AddLibraryManagers(this IServiceCollection services)
         {
+            services.AddScoped<IUserManager, UserManager>();
+            services.AddScoped<IAuthManager, AuthManager>();
         }
     }
 }

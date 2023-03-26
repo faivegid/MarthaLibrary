@@ -46,9 +46,9 @@ namespace marthaLibrary.Config
                     ValidateIssuer = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = config["JwtSettings:Issuer"],
-                    ValidAudience = config["JwtSettings:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:SecretKey"])),
+                    ValidIssuer = config["JwtSetting:Issuer"],
+                    ValidAudience = config["JwtSetting:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSetting:SecretKey"])),
                     ClockSkew = TimeSpan.Zero
                 };
             });

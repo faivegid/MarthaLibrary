@@ -1,4 +1,6 @@
 ﻿using marthaLibrary.API.Controllers.Base;
+using marthaLibrary.Managers.AuthManagers;
+using marthaLibrary.Models.ControllerRequestModels.AuthController;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +11,13 @@ namespace marthaLibrary.API.Controllers
     [Authorize]
     public class AuthController : LibraryBaseController
     {
+        private readonly IAuthManager _authManager;
+
         public AuthController(
-            ILogger<AuthController> logger) : base(logger)
+            ILogger<AuthController> logger,
+            IAuthManager authManager) : base(logger)
         {
+            _authManager = authManager;
         }
 
         [HttpGet, Route("health"), AllowAnonymous]
@@ -20,10 +26,13 @@ namespace marthaLibrary.API.Controllers
             return Done("Auth contoller is healthy");
         }
 
-        [HttpPost, Route("login")]
-        public async Task<IActionResult> Login()
+        [HttpPost, Route("login"), AllowAnonymous]
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            return Done();
+            var (token, userDto) = await _authManager.Login(request);
+
+            Response.Headers.Add("access-token", token);
+            return Done(userDto);
         }
     }
 }

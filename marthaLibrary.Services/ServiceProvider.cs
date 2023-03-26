@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using marthaLibrary.Services.TokenServices;
+using marthaLibrary.Services.UserServices;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +17,8 @@ namespace marthaLibrary.Services
         /// <param name="services"></param>
         public static void AddLibraryServices(this IServiceCollection services)
         {
-            
+            services.AddSingleton<ITokenService, TokenService>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

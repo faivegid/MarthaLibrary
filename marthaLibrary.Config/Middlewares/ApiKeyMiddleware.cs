@@ -22,6 +22,21 @@ namespace marthaLibrary.Config.Middlewares
 
             var requestApiKey = context.Request.Headers["X-Api-Key"].ToString();
 
+            if(string.IsNullOrEmpty(requestApiKey) )
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                var response = ApiResponse.Error("Missing Api Key", HttpStatusCode.Unauthorized);
+
+                // Serialize the response data to JSON format
+                var json = JsonConvert.SerializeObject(response);
+
+                // Write the serialized JSON data to the response body
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(json);
+
+                return;
+            }
+
             if (requestApiKey != apiKey || !isGuid)
             {
                 context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;

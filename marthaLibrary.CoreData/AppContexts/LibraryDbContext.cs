@@ -8,6 +8,7 @@ namespace marthaLibrary.CoreData.AppContexts
     {
         public LibraryDbContext(DbContextOptions options) : base(options)
         {
+            Database.Migrate();
         }
 
         public DbSet<AppUser> Users { get; set; }

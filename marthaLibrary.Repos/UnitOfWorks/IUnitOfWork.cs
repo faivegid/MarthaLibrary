@@ -13,5 +13,7 @@ namespace marthaLibrary.Repos.UnitOfWorks
         IBookReservationRepository BookReservations { get; }
         IBorrowedBookRepository BorrowedBooks { get; }
         INotificationRepository Notification { get; }
+
+        Task SaveChangesAsync();
     }
 }
