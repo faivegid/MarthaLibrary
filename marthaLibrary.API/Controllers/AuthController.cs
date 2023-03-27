@@ -1,6 +1,6 @@
 ﻿using marthaLibrary.API.Controllers.Base;
 using marthaLibrary.Managers.AuthManagers;
-using marthaLibrary.Models.ControllerRequestModels.AuthController;
+using marthaLibrary.Models.ControllerRequestModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +26,11 @@ namespace marthaLibrary.API.Controllers
             return Done("Auth contoller is healthy");
         }
 
+        /// <summary>
+        /// Login a particualr user if crednetial are correct
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost, Route("login"), AllowAnonymous]
         public async Task<IActionResult> Login(LoginRequest request)
         {

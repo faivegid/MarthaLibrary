@@ -6,6 +6,7 @@ namespace marthaLibrary.Repos.UserRepo
     public interface IUserRepository : IGenericRepository<AppUser>
     {
         Task<bool> CheckUserExist(string email);
+        Task<bool> CheckUserExist(Guid userId);
         Task<AppUser> FinUserByEmail(string email);
     }
 }

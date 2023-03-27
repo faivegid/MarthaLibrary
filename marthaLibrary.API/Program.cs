@@ -5,6 +5,7 @@ using marthaLibrary.Managers;
 using marthaLibrary.Models;
 using marthaLibrary.Repos;
 using marthaLibrary.Services;
+using marthaLibrary.Services.StaticHelpers;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -19,6 +20,7 @@ builder.Services.AddLibraryServices();
 builder.Services.AddLibraryManagers();
 
 builder.Services.ConfigureLibrarySecurity(config);
+Console.WriteLine(HashService.HashText("admin"));
 
 var app = builder.Build();
 

@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using marthaLibrary.CoreData.DatabaseModels;
+﻿using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.Models.Base;
 using marthaLibrary.Repos.UnitOfWorks;
 

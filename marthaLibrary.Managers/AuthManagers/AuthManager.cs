@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using marthaLibrary.Managers.Base;
 using marthaLibrary.Models.Base;
-using marthaLibrary.Models.ControllerRequestModels.AuthController;
+using marthaLibrary.Models.ControllerRequestModels;
 using marthaLibrary.Models.DTOs;
 using marthaLibrary.Repos.UnitOfWorks;
 using marthaLibrary.Services.StaticHelpers;

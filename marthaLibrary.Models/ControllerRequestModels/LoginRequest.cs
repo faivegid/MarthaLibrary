@@ -1,4 +1,4 @@
-﻿namespace marthaLibrary.Models.ControllerRequestModels.AuthController
+﻿namespace marthaLibrary.Models.ControllerRequestModels
 {
     public class LoginRequest
     {

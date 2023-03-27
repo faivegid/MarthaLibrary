@@ -2,7 +2,7 @@
 using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.Managers.Base;
 using marthaLibrary.Models.Base;
-using marthaLibrary.Models.ControllerRequestModels.UserController;
+using marthaLibrary.Models.ControllerRequestModels;
 using marthaLibrary.Models.DTOs;
 using marthaLibrary.Repos.UnitOfWorks;
 using marthaLibrary.Services.StaticHelpers;
@@ -40,7 +40,7 @@ namespace marthaLibrary.Managers.UserManagers
                 Email = request.Email,
                 Name = request.FullName,
                 PasswordHash = HashService.HashText(request.Password),
-                Role = CoreData.Enums.UserRole.Admin
+                Role = CoreData.Enums.UserRole.User
             };
 
             _unitOfWork.Users.Insert(user);
@@ -54,6 +54,14 @@ namespace marthaLibrary.Managers.UserManagers
         public async Task<UserInfoDto> GetUserInfo(Guid userId)
         {
             var user = await _userService.GetUserInternal(userId);
+
+            var infoDto = _mapper.Map<UserInfoDto>(user);
+            return infoDto;
+        }
+
+        public async Task<UserInfoDto> GetUserInfo(string email)
+        {
+            var user = await _userService.GetUserByEmail(email);
 
             var infoDto = _mapper.Map<UserInfoDto>(user);
             return infoDto;

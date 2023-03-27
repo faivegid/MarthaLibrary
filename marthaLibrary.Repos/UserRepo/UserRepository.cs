@@ -17,6 +17,13 @@ namespace marthaLibrary.Repos.UserRepo
                 .AnyAsync(u => u.Email == email);
             return userExist;
         }
+        
+        public async Task<bool> CheckUserExist(Guid userId)
+        {
+            var userExist = await dbSet.AsNoTracking()
+                .AnyAsync(u => u.Id == userId);
+            return userExist;
+        }
 
         public async Task<AppUser> FinUserByEmail(string email)
         {

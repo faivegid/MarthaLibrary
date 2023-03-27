@@ -1,4 +1,4 @@
-﻿namespace marthaLibrary.Models.ControllerRequestModels.UserController
+﻿namespace marthaLibrary.Models.ControllerRequestModels
 {
     public class CreateUserRequest
     {

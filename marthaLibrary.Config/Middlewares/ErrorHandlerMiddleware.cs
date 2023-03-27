@@ -25,7 +25,7 @@ namespace marthaLibrary.Config.Middlewares
             }
             catch (LibraryException ex)
             {
-                _logger.LogError(ex, "An error occurred while processing the request.");
+                _logger.LogError(ex, $"An error occurred while processing the request. stackTrace: {ex.StackTrace}");
                 var response = ApiResponse.Error(ex.ErrorDictionary, ex.Message, ex.ErrorStatus);
 
                 context.Response.StatusCode = (int)response.StatusCode;
@@ -34,7 +34,7 @@ namespace marthaLibrary.Config.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"An error occurred while processing the request. stackTrace:{ex.StackTrace}");
+                _logger.LogError(ex, $"An error occurred while processing the request.");
                 var response = ApiResponse.Error("An error occurred while processing the request", HttpStatusCode.InternalServerError);
 
                 context.Response.StatusCode = (int)response.StatusCode;

@@ -1,4 +1,6 @@
 ﻿using marthaLibrary.Managers.AuthManagers;
+using marthaLibrary.Managers.BookManagers;
+using marthaLibrary.Managers.NotificationManagers;
 using marthaLibrary.Managers.UserManagers;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +16,8 @@ namespace marthaLibrary.Managers
         {
             services.AddScoped<IUserManager, UserManager>();
             services.AddScoped<IAuthManager, AuthManager>();
+            services.AddScoped<IBookManager, BookManager>();
+            services.AddScoped<INotificationManager, NotificationManager>();
         }
     }
 }

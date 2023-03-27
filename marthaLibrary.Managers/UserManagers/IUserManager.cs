@@ -1,4 +1,4 @@
-﻿using marthaLibrary.Models.ControllerRequestModels.UserController;
+﻿using marthaLibrary.Models.ControllerRequestModels;
 using marthaLibrary.Models.DTOs;
 
 namespace marthaLibrary.Managers.UserManagers
