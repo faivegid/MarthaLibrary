@@ -20,6 +20,10 @@ namespace marthaLibrary.API.Controllers
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Checks if controller is working fine
+        /// </summary>
+        /// <returns></returns>
         [HttpGet, Route("health"), AllowAnonymous]
         public override IActionResult HealthCheck()
         {

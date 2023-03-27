@@ -19,6 +19,10 @@ namespace marthaLibrary.API.Controllers
             _bookManager = bookManager;
         }
 
+        /// <summary>
+        /// Checks if the controller is working fine
+        /// </summary>
+        /// <returns></returns>
         [HttpGet, Route("health"), AllowAnonymous]
         public override IActionResult HealthCheck()
         {
@@ -61,6 +65,12 @@ namespace marthaLibrary.API.Controllers
             return Done(bookList);
         }
 
+        /// <summary>
+        /// Returns a list of books that contains the search text in its name
+        /// </summary>
+        /// <param name="searchText"></param>
+        /// <param name="page"></param>
+        /// <returns></returns>
         [HttpGet, Route("search/{searchText}")]
         public async Task<IActionResult> SearchBook([FromRoute]string searchText, [FromQuery]int page)
         {

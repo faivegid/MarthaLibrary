@@ -2,13 +2,12 @@ using Hangfire;
 using marthaLibrary.Config;
 using marthaLibrary.Config.Middlewares;
 using marthaLibrary.CoreData;
-using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.Managers;
 using marthaLibrary.Models;
 using marthaLibrary.Repos;
 using marthaLibrary.Services;
 using marthaLibrary.Services.JobServices;
-using marthaLibrary.Services.StaticHelpers;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -24,7 +23,10 @@ builder.Services.AddLibraryManagers();
 builder.Services.AddLibraryJobs(config);
 
 builder.Services.ConfigureLibrarySecurity(config);
-Console.WriteLine(HashService.HashText("admin"));
+builder.Services.AddSwaggerGen(options =>
+{
+    options.IncludeXmlComments(GetXmlCommentPath());
+});
 
 var app = builder.Build();
 
@@ -52,3 +54,10 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static string GetXmlCommentPath()
+{
+    var basePath = AppContext.BaseDirectory;
+    var fileName = typeof(Program).GetTypeInfo().Assembly.GetName().Name + ".xml";
+    return Path.Combine(basePath, fileName);
+}

@@ -20,12 +20,21 @@ namespace marthaLibrary.API.Controllers
             _notifyManager = notifyManager;
         }
 
+        /// <summary>
+        /// Checks if controller is working fine
+        /// </summary>
+        /// <returns></returns>
         [HttpGet, Route("health"), AllowAnonymous]
         public override IActionResult HealthCheck()
         {
             return Done("Notifcaiton controller is healthy");
         }
 
+        /// <summary>
+        /// Creates a notifcation for a user to be notified if book is returned or if reservation time is over
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut, Route("create")]
         public async Task<IActionResult> CreateNotificaton(NotificationRequest request)
         {
