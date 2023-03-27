@@ -44,12 +44,12 @@ namespace marthaLibrary.CoreData.AppContexts
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    // Seed data
-        //    modelBuilder.Entity<Book>().HasData(seedData);
-        //    modelBuilder.Entity<AppUser>().HasData(admin);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Seed data
+            modelBuilder.Entity<Book>().HasData(seedData);
+            modelBuilder.Entity<AppUser>().HasData(admin);
 
-        //}
+        }
     }
 }

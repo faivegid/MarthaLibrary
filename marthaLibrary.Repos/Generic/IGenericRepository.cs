@@ -15,5 +15,6 @@ namespace marthaLibrary.Repos.Generic
         /// </summary>
         /// <param name="entity"></param>
         void HardDelete(T entity);
+        void UpdateRange(IEnumerable<T> entity);
     }
 }

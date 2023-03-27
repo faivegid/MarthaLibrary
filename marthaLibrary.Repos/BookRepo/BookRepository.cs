@@ -1,4 +1,5 @@
-﻿using marthaLibrary.CoreData.AppContexts;
+﻿using Azure;
+using marthaLibrary.CoreData.AppContexts;
 using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.Repos.Generic;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,16 @@ namespace marthaLibrary.Repos.BookRepo
         public async Task<bool> DbHasBooks()
         {
             return await dbSet.AnyAsync();
+        }
+        
+        public async Task<IEnumerable<Book>> GetDueReservedBooks()
+        {
+            var books = await (from book in dbSet
+                               where book.Status == CoreData.Enums.BookStatus.Reserved
+                               select book)
+                               .ToListAsync();
+
+            return books;
         }
     }
 }

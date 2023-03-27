@@ -1,11 +1,11 @@
-﻿using marthaLibrary.Services.TokenServices;
+﻿using Hangfire;
+using marthaLibrary.Services.EmailServices;
+using marthaLibrary.Services.JobServices;
+using marthaLibrary.Services.NotificationServices;
+using marthaLibrary.Services.TokenServices;
 using marthaLibrary.Services.UserServices;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace marthaLibrary.Services
 {
@@ -19,6 +19,16 @@ namespace marthaLibrary.Services
         {
             services.AddSingleton<ITokenService, TokenService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<INotificationService, NotificationService>();
+
+        }
+        
+        public static void AddLibraryJobs(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddHangfire(configuration => configuration.UseSqlServerStorage(config.GetConnectionString("HangfireConnection")));
+            services.AddHangfireServer();
+            services.AddTransient<BookReturnNotificationJob>();
         }
     }
 }

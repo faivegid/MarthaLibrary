@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Hangfire;
 using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.CoreData.Enums;
 using marthaLibrary.Managers.Base;
@@ -6,6 +7,7 @@ using marthaLibrary.Models.Base;
 using marthaLibrary.Models.ControllerRequestModels;
 using marthaLibrary.Models.DTOs;
 using marthaLibrary.Repos.UnitOfWorks;
+using marthaLibrary.Services.JobServices;
 using marthaLibrary.Services.UserServices;
 using Microsoft.Extensions.Logging;
 using System.Net;
@@ -62,7 +64,7 @@ namespace marthaLibrary.Managers.BookManagers
             {
                 BookId = request.BookId,
                 UserEmail = user.Email,
-                ReturnDate = DateTime.UtcNow,
+                ReturnDate = DateTime.UtcNow.AddHours(24),
                 BookName = book.BookName,
                 TransactionType = TransactionType.Reserve
             };
@@ -124,6 +126,8 @@ namespace marthaLibrary.Managers.BookManagers
             _unitOfWork.Books.Update(book);
             _unitOfWork.BookLogs.Insert(bookActivityLog);
             await _unitOfWork.SaveChangesAsync();
+
+            BackgroundJob.Enqueue<BookReturnNotificationJob>(job => job.SendNotification(book.Id));
         }
 
         public async Task<Book> GetBookByIdInternal(long bookId)

@@ -5,5 +5,6 @@ namespace marthaLibrary.Repos.NotificationRepo
 {
     public interface INotificationRepository : IGenericRepository<Notification>
     {
+        Task<IEnumerable<Notification>> GetUnNotifiedNotifcations(long bookId);
     }
 }

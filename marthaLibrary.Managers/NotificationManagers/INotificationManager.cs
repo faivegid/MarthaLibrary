@@ -1,6 +1,9 @@
-﻿namespace marthaLibrary.Managers.NotificationManagers
+﻿using marthaLibrary.Models.ControllerRequestModels;
+
+namespace marthaLibrary.Managers.NotificationManagers
 {
-    internal interface INotificationManager
+    public interface INotificationManager
     {
+        Task AddNewNotifcation(NotificationRequest request);
     }
 }

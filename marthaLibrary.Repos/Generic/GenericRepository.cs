@@ -46,5 +46,10 @@ namespace marthaLibrary.Repos.Generic
         {
             dbSet.Update(entity);
         }
+        
+        public void UpdateRange(IEnumerable<T> entity)
+        {
+            dbSet.UpdateRange(entity);
+        }
     }
 }
