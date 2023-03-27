@@ -13,7 +13,7 @@ namespace marthaLibrary.Config
         {
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Aza API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Martha Library API", Version = "v1" });
                 options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
                     Description = "Standard authorization header using the bearer scheme (\"bearer {token} \")",
