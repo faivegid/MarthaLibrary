@@ -15,5 +15,14 @@ namespace marthaLibrary.Models.ControllerRequestModels
 
         [Url]
         public string FrontPagePicUrl { get; set; }
+        [Required]
+        public int NoOfPages { get; set; }
+        [Required]
+        public string Langauge { get; set; }
+        public string Format { get; set; } = "Pages"
+        [Required]
+        public string ISBN { get; set; }
+        [Required]
+        public DateTime DatePublished { get; set; }
     }
 }

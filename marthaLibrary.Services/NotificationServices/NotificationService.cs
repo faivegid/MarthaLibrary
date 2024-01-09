@@ -34,6 +34,10 @@ namespace marthaLibrary.Services.NotificationServices
             }
         }
 
+        public void SendResetCode(string email, string code)
+        {
+        }
+
         public void SendSingleNotifcation(Notification notify)
         {
             _emailService.SendMailBookIsNowAvailable(notify.UserEmail, notify.BookName, notify.BookId);

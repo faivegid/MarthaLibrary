@@ -12,10 +12,10 @@ namespace marthaLibrary.Repos.BookRepo
         {
         }
 
-        public async Task<bool> CheckIfBookExist(string name, string author)
+        public async Task<bool> CheckIfBookExist(string name, string isbn)
         {
             var bookExist = await dbSet.AsNoTracking().AnyAsync(x =>
-                                    x.BookName == name && x.AuthorName == author);
+                                    x.BookName == name && x.ISBN == isbn);
 
             return bookExist;
         }

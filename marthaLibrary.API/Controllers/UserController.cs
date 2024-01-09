@@ -43,5 +43,43 @@ namespace marthaLibrary.API.Controllers
             Response.Headers.Add("access-token", token);
             return Done(userDto);
         }
+
+        /// <summary>
+        /// Sends reset code to the email if the emailis tied to a user in the system
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost, Route("send-reset-code"), AllowAnonymous]
+        public async Task<IActionResult> SendResetPasswordCode(SendResetCodeRequest request)
+        {
+            var codeId = await _userManager.SendResetCode(request.Email);
+            return Done({ codeId});
+        }
+
+        /// <summary>
+        /// Verfiy the reset code to generate toke
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost, Route("verify-reset-code"), AllowAnonymous]
+        public async Task<IActionResult> VerifyForgotPasswordCode(VerifyResetCodeRequest request)
+        {
+            var token = await _userManager.VerifyResetCode(request);
+            Response.Headers.Add("reset-token", token);
+
+            return Done();
+        }
+
+        /// <summary>
+        /// resets the password this is na authorised endpoint
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPut, Route("reset-password")]
+        public async Task<IActionResult> ResetPassowrd(ResetPasswordRequest request)
+        {
+            await _userManager.ResetPassword(UserId, Guid.Parse(Authentication), request.NewPassword);
+            return Done();
+        }
     }
 }

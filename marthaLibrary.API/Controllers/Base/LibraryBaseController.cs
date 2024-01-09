@@ -25,6 +25,11 @@ namespace marthaLibrary.API.Controllers.Base
         /// gets the current logged in user namee claims
         /// </summary>
         public string Name { get => GetName(); }
+        
+        /// <summary>
+        /// gets the authentication claim
+        /// </summary>
+        public string Authentication { get => GetAuth(); }
 
 
         public LibraryBaseController(ILogger logger)
@@ -117,12 +122,23 @@ namespace marthaLibrary.API.Controllers.Base
         private string GetName()
         {
             var jwt = GetJwtToken();
-            var email = jwt.Claims.First(claim => claim.Type == ClaimTypes.Name).Value;
+            var name = jwt.Claims.First(claim => claim.Type == ClaimTypes.Name).Value;
 
-            if (string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(name))
                 throw new LibraryException("unable to verify user", HttpStatusCode.Unauthorized);
 
-            return email;
+            return name;
+        }
+        
+        private string GetAuth()
+        {
+            var jwt = GetJwtToken();
+            var auth = jwt.Claims.First(claim => claim.Type == ClaimTypes.Authentication).Value;
+
+            if (string.IsNullOrEmpty(auth))
+                throw new LibraryException("unable to verify user", HttpStatusCode.Unauthorized);
+
+            return auth;
         }
         #endregion
     }

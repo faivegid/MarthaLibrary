@@ -25,14 +25,28 @@ namespace marthaLibrary.Services.TokenServices
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        public string GenerateToken(ResetCode code, AppUser user)
+        {
+            var authClaims = new List<Claim>()
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Authentication, code.Id.ToString())
+            };
+            var sigingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.SecretKey));
+
+            JwtSecurityToken token = CreateToken(authClaims, sigingKey, 5);
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
         #region Private Methods
-        private JwtSecurityToken CreateToken(List<Claim> authClaims, SymmetricSecurityKey sigingKey)
+        private JwtSecurityToken CreateToken(List<Claim> authClaims, SymmetricSecurityKey sigingKey, int duration = 0)
         {
             return new JwtSecurityToken(
                 audience: _jwtSettings.Audience,
                 issuer: _jwtSettings.Issuer,
                 claims: authClaims,
-                expires: DateTime.Now.AddMinutes(_jwtSettings.Duration),
+                expires: DateTime.Now.AddMinutes(duration == 0 ? _jwtSettings.Duration : duration),
                 signingCredentials: new SigningCredentials(sigingKey, SecurityAlgorithms.HmacSha256)
             );
         }

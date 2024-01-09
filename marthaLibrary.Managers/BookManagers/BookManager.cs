@@ -27,6 +27,8 @@ namespace marthaLibrary.Managers.BookManagers
             _userService = userService;
         }
 
+
+
         public async Task<Book> AddBook(AddBookRequest request)
         {
             var bookExist = await _unitOfWork.Books.CheckIfBookExist(request.BookName, request.AuthorName);
@@ -35,10 +37,15 @@ namespace marthaLibrary.Managers.BookManagers
             var book = new Book
             {
                 BookName = request.BookName,
-                AuthorName = request.AuthorName,
+                Authors = request.AuthorName,
                 Description = request.Description,
                 FrontPagePicUrl = request.FrontPagePicUrl,
-                Status = BookStatus.Available
+                Status = BookStatus.Available,
+                NoOfPages = request.NoOfPages,
+                Langauge = request.Langauge,
+                Format =request.Format,
+                DatePublished = request.DatePublished,
+                ISBN = request.ISBN
             };
 
             _unitOfWork.Books.Insert(book);

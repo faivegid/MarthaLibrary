@@ -7,5 +7,8 @@ namespace marthaLibrary.Managers.UserManagers
     {
         Task<(string token, UserDto userDto)> CreateNewUser(CreateUserRequest request);
         Task<UserInfoDto> GetUserInfo(Guid userId);
+        Task ResetPassword(Guid userId, Guid codeId, string newPassword);
+        Task<Guid> SendResetCode(string email);
+        Task<string> VerifyResetCode(VerifyResetCodeRequest request);
     }
 }

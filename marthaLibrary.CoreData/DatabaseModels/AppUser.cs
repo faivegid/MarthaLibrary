@@ -9,5 +9,10 @@ namespace marthaLibrary.CoreData.DatabaseModels
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public UserRole Role { get; set; }
+
+        public void SetNewPassword(string newPasswordHAsh)
+        {
+            PasswordHash = newPasswordHAsh;
+        }
     }
 }

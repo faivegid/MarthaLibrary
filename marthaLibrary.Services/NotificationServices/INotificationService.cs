@@ -6,5 +6,6 @@ namespace marthaLibrary.Services.NotificationServices
     {
         void SendBulkNotifcation(IEnumerable<Notification> notifications);
         void SendSingleNotifcation(Notification notify);
+        void SendResetCode(string email, string code);
     }
 }

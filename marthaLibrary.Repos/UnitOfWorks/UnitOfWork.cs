@@ -2,6 +2,7 @@
 using marthaLibrary.Repos.BookRepo;
 using marthaLibrary.Repos.BookTransactionRepo;
 using marthaLibrary.Repos.NotificationRepo;
+using marthaLibrary.Repos.ResetCodeRepo;
 using marthaLibrary.Repos.UserRepo;
 
 namespace marthaLibrary.Repos.UnitOfWorks
@@ -13,6 +14,7 @@ namespace marthaLibrary.Repos.UnitOfWorks
         private IBookRepository _books;
         private INotificationRepository _notifcations;
         private IBookTransactionRepository _bookLogs;
+        private IResetCodeRepository _resetCodes;
 
         public UnitOfWork(LibraryDbContext context)
         {
@@ -23,6 +25,7 @@ namespace marthaLibrary.Repos.UnitOfWorks
         public IBookRepository Books => _books ??= new BookRepository(_db);
         public INotificationRepository Notification => _notifcations ??=  new NotificationRepository(_db);
         public IBookTransactionRepository BookLogs => _bookLogs ??=  new BookTransactionRepository(_db);
+        public IResetCodeRepository ResetCodes => _resetCodes ??=  new ResetCodeRepository(_db);
 
         public async Task SaveChangesAsync()
         {
