@@ -1,4 +1,5 @@
 ﻿using Hangfire;
+using Hangfire.PostgreSql;
 using marthaLibrary.Services.EmailServices;
 using marthaLibrary.Services.JobServices;
 using marthaLibrary.Services.NotificationServices;
@@ -26,7 +27,7 @@ namespace marthaLibrary.Services
         
         public static void AddLibraryJobs(this IServiceCollection services, IConfiguration config)
         {
-            services.AddHangfire(configuration => configuration.UseSqlServerStorage(config.GetConnectionString("HangfireConnection")));
+            services.AddHangfire(configuration => configuration.UsePostgreSqlStorage(config.GetConnectionString("HangfireConnection")));
             services.AddHangfireServer();
             services.AddTransient<BookReturnNotificationJob>();
         }

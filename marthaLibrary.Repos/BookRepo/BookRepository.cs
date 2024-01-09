@@ -1,5 +1,4 @@
-﻿using Azure;
-using marthaLibrary.CoreData.AppContexts;
+﻿using marthaLibrary.CoreData.AppContexts;
 using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.Repos.Generic;
 using Microsoft.EntityFrameworkCore;

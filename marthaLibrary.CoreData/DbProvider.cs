@@ -15,7 +15,7 @@ namespace marthaLibrary.CoreData
         public static void AddDbConfigurations(this IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<LibraryDbContext>(options =>
-                 options.UseSqlServer(config.GetConnectionString("LibraryDb")));
+                 options.UseNpgsql(config.GetConnectionString("LibraryDb")));
         }
     }
 }

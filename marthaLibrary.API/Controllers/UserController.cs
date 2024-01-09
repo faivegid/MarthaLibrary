@@ -53,7 +53,7 @@ namespace marthaLibrary.API.Controllers
         public async Task<IActionResult> SendResetPasswordCode(SendResetCodeRequest request)
         {
             var codeId = await _userManager.SendResetCode(request.Email);
-            return Done({ codeId});
+            return Done(new { codeId });
         }
 
         /// <summary>

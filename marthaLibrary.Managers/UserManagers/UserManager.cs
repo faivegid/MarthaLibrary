@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Azure.Core;
 using marthaLibrary.CoreData.DatabaseModels;
 using marthaLibrary.Managers.Base;
 using marthaLibrary.Models.Base;
