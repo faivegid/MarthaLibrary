@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-    - env:
+      env:
           DOCKER_USER: ${{ secrets.DOCKER_USER}}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PWD}}          
       run: |
