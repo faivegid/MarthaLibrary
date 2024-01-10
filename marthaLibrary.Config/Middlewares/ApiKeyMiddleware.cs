@@ -21,39 +21,35 @@ namespace marthaLibrary.Config.Middlewares
             var isGuid = Guid.TryParse(apiKey, out var keyId);
 
             var requestApiKey = context.Request.Headers["X-Api-Key"].ToString();
-            var requestPath = context.Request.Path;
 
-            if (!requestPath.StartsWithSegments("/swagger")) // Skip API key check for Swagger paths
+            if(string.IsNullOrEmpty(requestApiKey) )
             {
-                if (string.IsNullOrEmpty(requestApiKey))
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    var response = ApiResponse.Error("Missing Api Key", HttpStatusCode.Unauthorized);
+                context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                var response = ApiResponse.Error("Missing Api Key", HttpStatusCode.Unauthorized);
 
-                    // Serialize the response data to JSON format
-                    var json = JsonConvert.SerializeObject(response);
+                // Serialize the response data to JSON format
+                var json = JsonConvert.SerializeObject(response);
 
-                    // Write the serialized JSON data to the response body
-                    context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsync(json);
+                // Write the serialized JSON data to the response body
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(json);
 
-                    return;
-                }
+                return;
+            }
 
-                if (requestApiKey != apiKey || !isGuid)
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-                    var response = ApiResponse.Error("Invalid Api Key", HttpStatusCode.Unauthorized);
+            if (requestApiKey != apiKey || !isGuid)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                var response = ApiResponse.Error("Invalid Api Key", HttpStatusCode.Unauthorized);
 
-                    // Serialize the response data to JSON format
-                    var json = JsonConvert.SerializeObject(response);
+                // Serialize the response data to JSON format
+                var json = JsonConvert.SerializeObject(response);
 
-                    // Write the serialized JSON data to the response body
-                    context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsync(json);
+                // Write the serialized JSON data to the response body
+                context.Response.ContentType = "application/json";
+                await context.Response.WriteAsync(json);
 
-                    return;
-                }
+                return;
             }
 
             await next(context);
